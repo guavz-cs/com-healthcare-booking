@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Search community healthcare services and explore appointment options at Gqeberha Community Clinic."
+  >
+  <title>Find a Service | Gqeberha Community Clinic</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">
+        Gqeberha Community Clinic
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="services.html" aria-current="page">Find a service</a>
+          </li>
+          <li>
+            <a href="book.html">Book an appointment</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+    <div class="wrap">
+
+      <section aria-labelledby="page-heading">
+        <p class="eyebrow">Explore healthcare</p>
+        <h1 id="page-heading">Find a service</h1>
+
+        <p>
+          Search the clinic directory to explore healthcare services,
+          review example appointment information and find booking options.
+        </p>
+      </section>
+
+      <div class="content-grid">
+
+        <section aria-labelledby="results-heading">
+          <h2 id="results-heading">Healthcare services</h2>
+
+          <form
+            class="search-form"
+            action="services.html"
+            method="get"
+            role="search"
+            aria-label="Search healthcare services"
+          >
+            <div class="field">
+              <label for="q">Search by service name</label>
+
+              <p class="hint" id="q-hint">
+                Enter a service or health topic, such as vaccination,
+                diabetes or eye care.
+              </p>
+
+              <input
+                id="q"
+                name="q"
+                type="search"
+                aria-describedby="q-hint"
+              >
+            </div>
+
+            <button class="button" type="submit">
+              Search services
+            </button>
+          </form>
+
+          <p class="results-summary" id="results-summary">
+            <strong>Example results: 3 services</strong>
+          </p>
+
+          <p class="hint">
+            The services and availability below are illustrative
+            wireframe content, not verified clinic information.
+          </p>
+
+          <div class="service-grid">
+
+            <article class="service-card">
+              <h3>General check-up</h3>
+
+              <p>
+                <strong>Category:</strong> Primary care
+              </p>
+
+              <p>
+                Routine consultations and general health assessments.
+              </p>
+
+              <p>
+                <strong>Example availability:</strong>
+                Tuesday at 09:30.
+              </p>
+
+              <a href="book.html">
+                View general check-up booking options
+              </a>
+            </article>
+
+            <article class="service-card">
+              <h3>Diabetes review</h3>
+
+              <p>
+                <strong>Category:</strong> Long-term conditions
+              </p>
+
+              <p>
+                Consultations for people seeking diabetes-related
+                assessment and ongoing care.
+              </p>
+
+              <p>
+                <strong>Example availability:</strong>
+                Wednesday at 11:00.
+              </p>
+
+              <a href="book.html">
+                View diabetes review booking options
+              </a>
+            </article>
+
+            <article class="service-card">
+              <h3>Childhood vaccinations</h3>
+
+              <p>
+                <strong>Category:</strong> Children and families
+              </p>
+
+              <p>
+                Information about childhood vaccination services
+                and appointment options.
+              </p>
+
+              <p>
+                <strong>Example availability:</strong>
+                Thursday at 08:30.
+              </p>
+
+              <a href="book.html">
+                View childhood vaccination booking options
+              </a>
+            </article>
+
+          </div>
+        </section>
+
+        <aside class="help-panel" aria-labelledby="filters-heading">
+          <p class="eyebrow">Narrow your search</p>
+          <h2 id="filters-heading">Filter services</h2>
+
+          <p>
+            Choose one or more options to indicate which services
+            you want to find.
+          </p>
+
+          <form action="services.html" method="get">
+
+            <fieldset>
+              <legend>Service category</legend>
+
+              <div class="filter-option">
+                <input
+                  type="checkbox"
+                  id="category-primary"
+                  name="category"
+                  value="primary-care"
+                >
+                <label for="category-primary">Primary care</label>
+              </div>
+
+              <div class="filter-option">
+                <input
+                  type="checkbox"
+                  id="category-chronic"
+                  name="category"
+                  value="long-term-conditions"
+                >
+                <label for="category-chronic">
+                  Long-term conditions
+                </label>
+              </div>
+
+              <div class="filter-option">
+                <input
+                  type="checkbox"
+                  id="category-children"
+                  name="category"
+                  value="children-and-families"
+                >
+                <label for="category-children">
+                  Children and families
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>When do you prefer to be seen?</legend>
+
+              <p class="hint">
+                This is a preference filter, not a medical urgency assessment.
+              </p>
+
+              <div class="filter-option">
+                <input
+                  type="radio"
+                  id="availability-today"
+                  name="availability"
+                  value="today"
+                >
+                <label for="availability-today">Today</label>
+              </div>
+
+              <div class="filter-option">
+                <input
+                  type="radio"
+                  id="availability-week"
+                  name="availability"
+                  value="within-week"
+                >
+                <label for="availability-week">Within a week</label>
+              </div>
+
+              <div class="filter-option">
+                <input
+                  type="radio"
+                  id="availability-routine"
+                  name="availability"
+                  value="routine"
+                >
+                <label for="availability-routine">Routine appointment</label>
+              </div>
+            </fieldset>
+
+            <button class="button" type="submit">
+              Apply filters
+            </button>
+
+            <p>
+              <a href="services.html">Clear search and filters</a>
+            </p>
+          </form>
+        </aside>
+
+      </div>
+
+      <section
+        class="accessibility-note"
+        aria-labelledby="accessibility-heading"
+      >
+        <h2 id="accessibility-heading">Need help finding a service?</h2>
+
+        <p>
+          Use the search field to enter a service name, or navigate
+          through the category and availability options using your
+          keyboard. Each control has a visible label.
+        </p>
+
+        <p>
+          If you cannot access the information you need, contact
+          the clinic through its verified contact channels.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+
+      <div>
+        <p class="footer-brand">Gqeberha Community Clinic</p>
+
+        <p class="footer-note">
+          Accessible community healthcare booking portal prototype.
+          Clinic information is illustrative and must be verified
+          before deployment.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">Contact and safety</h2>
+
+        <p>
+          Clinic address and opening hours: to be confirmed.
+        </p>
+
+        <p>
+          For emergencies, contact the appropriate local emergency
+          service. Verify emergency information before deployment.
+        </p>
+
+        <p><a href="#main">Back to main content</a></p>
+      </div>
+
+    </div>
+  </footer>
+</body>
+</html>
