@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Book an Appointment | Gqeberha Community Clinic</title>
+  <meta
+    name="description"
+    content="Accessible appointment booking wireframe for Gqeberha Community Clinic."
+  >
+
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">
+        Gqeberha Community Clinic
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="services.html">Find a service</a>
+          </li>
+          <li>
+            <a href="book.html" aria-current="page">Book an appointment</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+    <div class="wrap">
+      <div class="content-grid">
+
+        <article aria-labelledby="booking-heading">
+          <p class="eyebrow">Explore healthcare</p>
+          <h1 id="booking-heading">Book an appointment</h1>
+
+          <p>
+            Use this form to request a clinic appointment.
+            Fields marked with an asterisk (*) are required.
+          </p>
+
+          <p id="form-instructions">
+            Please provide your contact details and preferred appointment
+            information. The clinic must confirm availability.
+          </p>
+
+          <form action="#" method="get">
+
+            <section aria-labelledby="about-heading">
+              <h2 id="about-heading">About you</h2>
+
+              <div class="field">
+                <label for="name">
+                  Full name <span aria-hidden="true">*</span>
+                  <span class="required-text">(required)</span>
+                </label>
+
+                <p class="hint" id="name-hint">
+                  Enter your full name as it appears on your health card.
+                </p>
+
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  aria-describedby="name-hint"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="email">
+                  Email address <span aria-hidden="true">*</span>
+                  <span class="required-text">(required)</span>
+                </label>
+
+                <p class="hint" id="email-hint">
+                  We will use this address to contact you about your request.
+                </p>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  aria-describedby="email-hint"
+                  required
+                >
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone number (optional)</label>
+
+                <p class="hint" id="phone-hint">
+                  Provide a number where the clinic can reach you if needed.
+                </p>
+
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  aria-describedby="phone-hint"
+                >
+              </div>
+            </section>
+
+            <section aria-labelledby="visit-heading">
+              <h2 id="visit-heading">Your visit</h2>
+
+              <div class="field">
+                <label for="service">
+                  Service <span aria-hidden="true">*</span>
+                  <span class="required-text">(required)</span>
+                </label>
+
+                <p class="hint" id="service-hint">
+                  Select the healthcare service you need.
+                </p>
+
+                <select
+                  id="service"
+                  name="service"
+                  aria-describedby="service-hint"
+                  required
+                >
+                  <option value="">Choose a service</option>
+                  <option value="general-check-up">General check-up</option>
+                  <option value="diabetes-review">Diabetes review</option>
+                  <option value="childhood-vaccinations">
+                    Childhood vaccinations
+                  </option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="date">
+                  Preferred date <span aria-hidden="true">*</span>
+                  <span class="required-text">(required)</span>
+                </label>
+
+                <p class="hint" id="date-hint">
+                  Select your preferred date. The clinic must confirm
+                  appointment availability.
+                </p>
+
+                <input
+                  id="date"
+                  name="date"
+                  type="date"
+                  aria-describedby="date-hint"
+                  required
+                >
+              </div>
+
+              <fieldset>
+                <legend>How urgent is your appointment?</legend>
+
+                <p class="hint" id="urgency-hint">
+                  Choose the option that best describes when you need care.
+                </p>
+
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="urgency-today"
+                    name="urgency"
+                    value="today"
+                    aria-describedby="urgency-hint"
+                  >
+                  <label for="urgency-today">
+                    I need to be seen today
+                  </label>
+                </div>
+
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="urgency-week"
+                    name="urgency"
+                    value="within-a-week"
+                    aria-describedby="urgency-hint"
+                  >
+                  <label for="urgency-week">Within a week</label>
+                </div>
+
+                <div class="radio-option">
+                  <input
+                    type="radio"
+                    id="urgency-routine"
+                    name="urgency"
+                    value="routine"
+                    aria-describedby="urgency-hint"
+                    checked
+                  >
+                  <label for="urgency-routine">Routine</label>
+                </div>
+              </fieldset>
+
+              <div class="field">
+                <label for="notes">
+                  Accessibility needs or additional information (optional)
+                </label>
+
+                <p class="hint" id="notes-hint">
+                  For example, mention wheelchair access or communication
+                  assistance. Avoid sharing unnecessary sensitive details.
+                </p>
+
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  aria-describedby="notes-hint"
+                ></textarea>
+              </div>
+            </section>
+
+            <button class="button" type="submit">
+              Submit appointment request
+            </button>
+          </form>
+        </article>
+
+        <aside class="help-panel" aria-labelledby="before-heading">
+          <h2 id="before-heading">Before you book</h2>
+
+          <p>
+            Bring your health card and a list of any medicines you take
+            when attending your appointment.
+          </p>
+
+          <h3>Need urgent medical help?</h3>
+
+          <p>
+            Do not rely on this booking form for emergencies. Contact your
+            local emergency service if you need immediate assistance.
+          </p>
+
+          <p>
+            <a href="services.html">Back to services</a>
+          </p>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+
+      <div>
+        <p class="footer-brand">Gqeberha Community Clinic</p>
+
+        <p class="footer-note">
+          Accessible community healthcare booking portal prototype.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">Contact and safety</h2>
+
+        <p>
+          Clinic address and opening hours: to be confirmed.
+        </p>
+
+        <p>
+          For emergencies, contact the appropriate local emergency
+          service. 
+        </p>
+
+        <p><a href="#main">Back to main content</a></p>
+      </div>
+
+    </div>
+  </footer>
+</body>
+</html>
