@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en-ZA">
 <head>
@@ -41,30 +40,52 @@
 
   <main id="main" class="site-main" tabindex="-1">
     <div class="wrap">
-      <div class="content-grid">
+      <div class="booking-layout">
 
-        <article aria-labelledby="booking-heading">
-          <p class="eyebrow">Explore healthcare</p>
+        <section class="booking-intro">
+          <p class="eyebrow">Request a visit</p>
           <h1 id="booking-heading">Book an appointment</h1>
 
           <p>
             Use this form to request a clinic appointment.
-            Fields marked with an asterisk (*) are required.
+            Required fields are marked with an asterisk (*) and the word
+            &ldquo;required&rdquo;.
           </p>
 
           <p id="form-instructions">
             Please provide your contact details and preferred appointment
             information. The clinic must confirm availability.
           </p>
+        </section>
 
-          <form action="#" method="get">
+        <aside class="help-panel before-panel" aria-labelledby="before-heading">
+          <h2 id="before-heading">Before you book</h2>
+
+          <p>
+            Bring your health card and a list of any medicines you take
+            when attending your appointment.
+          </p>
+
+          <h3>Need urgent medical help?</h3>
+
+          <p>
+            Do not rely on this booking form for emergencies. Contact your
+            local emergency service if you need immediate assistance.
+          </p>
+
+          <p>
+            <a href="services.html">Back to services</a>
+          </p>
+        </aside>
+
+        <form action="#" method="get" aria-labelledby="booking-heading">
 
             <section aria-labelledby="about-heading">
               <h2 id="about-heading">About you</h2>
 
               <div class="field">
                 <label for="name">
-                  Full name <span aria-hidden="true">*</span>
+                  Full name <span class="required-mark" aria-hidden="true">*</span>
                   <span class="required-text">(required)</span>
                 </label>
 
@@ -84,7 +105,7 @@
 
               <div class="field">
                 <label for="email">
-                  Email address <span aria-hidden="true">*</span>
+                  Email address <span class="required-mark" aria-hidden="true">*</span>
                   <span class="required-text">(required)</span>
                 </label>
 
@@ -124,7 +145,7 @@
 
               <div class="field">
                 <label for="service">
-                  Service <span aria-hidden="true">*</span>
+                  Service <span class="required-mark" aria-hidden="true">*</span>
                   <span class="required-text">(required)</span>
                 </label>
 
@@ -149,7 +170,7 @@
 
               <div class="field">
                 <label for="date">
-                  Preferred date <span aria-hidden="true">*</span>
+                  Preferred date <span class="required-mark" aria-hidden="true">*</span>
                   <span class="required-text">(required)</span>
                 </label>
 
@@ -167,7 +188,7 @@
                 >
               </div>
 
-              <fieldset>
+              <fieldset aria-describedby="urgency-hint">
                 <legend>How urgent is your appointment?</legend>
 
                 <p class="hint" id="urgency-hint">
@@ -180,7 +201,6 @@
                     id="urgency-today"
                     name="urgency"
                     value="today"
-                    aria-describedby="urgency-hint"
                   >
                   <label for="urgency-today">
                     I need to be seen today
@@ -193,7 +213,6 @@
                     id="urgency-week"
                     name="urgency"
                     value="within-a-week"
-                    aria-describedby="urgency-hint"
                   >
                   <label for="urgency-week">Within a week</label>
                 </div>
@@ -204,7 +223,6 @@
                     id="urgency-routine"
                     name="urgency"
                     value="routine"
-                    aria-describedby="urgency-hint"
                     checked
                   >
                   <label for="urgency-routine">Routine</label>
@@ -234,27 +252,6 @@
               Submit appointment request
             </button>
           </form>
-        </article>
-
-        <aside class="help-panel" aria-labelledby="before-heading">
-          <h2 id="before-heading">Before you book</h2>
-
-          <p>
-            Bring your health card and a list of any medicines you take
-            when attending your appointment.
-          </p>
-
-          <h3>Need urgent medical help?</h3>
-
-          <p>
-            Do not rely on this booking form for emergencies. Contact your
-            local emergency service if you need immediate assistance.
-          </p>
-
-          <p>
-            <a href="services.html">Back to services</a>
-          </p>
-        </aside>
 
       </div>
     </div>
