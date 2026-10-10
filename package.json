@@ -3,11 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "Gqeberha Community Clinic: accessible healthcare booking portal prototype (React SPA)",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "audit:wireframes": "vitest run src/test/wireframes.test.jsx"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -15,13 +19,21 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
+    "axe-core": "^4.9.1",
     "eslint": "^10.10.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",
     "globals": "^17.12.0",
-    "vite": "^8.3.0"
+    "jest-axe": "^9.0.0",
+    "jsdom": "^24.1.1",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.3"
   }
 }
