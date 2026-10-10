@@ -1,111 +1,919 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  color-scheme: light;
+  --ink: #17212B;
+  --muted: #44505C;
+  --paper: #FFFFFF;
+  --sage: #EEF4F1;
+  --teal: #0F4C5C;
+  --teal-dark: #0A3743;
+  --focus: #2B6CB0;
+  --focus-on-dark: #FFD54F;
+  --border: #5F6B76;
+  --error: #9B1C1C;
+  --amber-bg: #FDF1DC;
+  --amber-text: #7A3E00;
+  --error-bg: #FDECEC;
+  --content-width: 70rem;
+  --radius: 0.5rem;
+  --shadow: 0 0.25rem 1rem rgb(23 33 43 / 8%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html {
+  font-size: 100%;
+  scroll-padding-top: 1rem;
 }
 
 body {
   margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
 }
 
-#root {
-  width: 1126px;
+img,
+svg {
   max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  height: auto;
+}
+
+a {
+  color: var(--teal);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 0.08em;
+}
+
+a:hover {
+  color: var(--teal-dark);
+  text-decoration-thickness: 0.14em;
+}
+
+a:active {
+  text-decoration-thickness: 0.16em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.site-header :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--focus-on-dark);
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0.5rem;
+  z-index: 1000;
+  max-width: calc(100% - 1rem);
+  padding: 0.75rem 1rem;
+  color: var(--teal);
+  background: var(--paper);
+  border: 2px solid var(--teal);
+  border-radius: 0 0 var(--radius) var(--radius);
+  font-weight: 700;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.wrap {
+  width: min(100% - 2.5rem, var(--content-width));
+  margin-inline: auto;
+}
+
+.site-header {
+  color: var(--paper);
+  background: var(--teal);
+  border-bottom: 4px solid var(--focus-on-dark);
+}
+
+.header-inner {
   display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding-block: 1rem;
+}
+
+.brand {
+  max-width: 100%;
+  color: var(--paper);
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: var(--paper);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.55rem 0.8rem;
+  color: var(--paper);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  border-radius: 0.2rem;
+}
+
+.nav-list a:hover {
+  color: var(--paper);
+  background: var(--teal-dark);
+}
+
+.nav-list a[aria-current="page"] {
+  font-weight: 800;
+  text-decoration-thickness: 0.18em;
+  text-underline-offset: 0.35em;
+}
+
+.site-main {
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+.hero {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background: var(--sage);
+  border: 1px solid var(--border);
+  border-left: 0.5rem solid var(--teal);
+  border-radius: var(--radius);
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+h2,
+h3 {
+  color: var(--ink);
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+  max-width: 20ch;
+  margin: 0 0 1rem;
+  color: var(--teal);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  line-height: 1.15;
 }
+
 h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
+  line-height: 1.25;
+}
+
+h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+p {
+  max-width: 70ch;
+  margin-block: 0 1rem;
+}
+
+.hero-copy {
+  max-width: 65ch;
+  font-size: 1.125rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.65rem 1.1rem;
+  color: var(--paper);
+  background: var(--teal);
+  border: 2px solid var(--teal);
+  border-radius: 0.25rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+}
+
+.button:hover {
+  color: var(--paper);
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+  text-decoration-color: currentColor;
+}
+
+.button-secondary {
+  color: var(--teal);
+  background: var(--paper);
+  border-color: var(--teal);
+}
+
+.button-secondary:hover {
+  color: var(--teal-dark);
+  background: var(--sage);
+  border-color: var(--teal-dark);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(15rem, 1fr);
+  gap: 2rem;
+  align-items: start;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+.section-heading {
+  margin-bottom: 1.25rem;
+}
+
+.section-heading > p:last-child {
+  margin-bottom: 0;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 1.25rem;
+  background: var(--paper);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.service-card p {
+  flex-grow: 1;
+}
+
+.service-card a {
+  font-weight: 700;
+}
+
+.help-panel {
+  padding: 1.5rem;
+  background: var(--sage);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.help-panel .eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.availability-note {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--border);
+}
+
+.availability-note h3 {
+  margin-bottom: 0.5rem;
+}
+
+.availability-note p:last-child {
+  margin-bottom: 0;
+}
+
+.accessibility-note {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.accessibility-note p:last-child {
+  margin-bottom: 0;
+}
+
+.site-footer {
+  padding-block: 2rem;
+  color: var(--paper);
+  background: var(--teal);
+  border-top: 4px solid var(--focus-on-dark);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.footer-brand {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.footer-note {
+  max-width: 55ch;
+}
+
+.footer-heading {
+  margin-bottom: 0.75rem;
+  color: var(--paper);
+  font-size: 1.25rem;
+}
+
+.site-footer a {
+  color: var(--paper);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.site-footer a:hover {
+  color: var(--paper);
+  text-decoration-thickness: 0.15em;
+}
+
+.site-footer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Keep native controls accessible when these styles are reused on other pages. */
+label,
+legend {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.hint {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  max-width: 34rem;
+  min-height: 44px;
+  padding: 0.55rem 0.7rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--border);
+  border-radius: 0.2rem;
+}
+
+.field {
+  margin-bottom: 1.5rem;
+}
+
+fieldset {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--border);
+}
+
+.required-mark {
+  color: var(--error);
+}
+
+/* Native disclosure controls work without JavaScript. */
+details {
+  margin-bottom: 1rem;
+  background: var(--paper);
+  border: 2px solid var(--border);
+  border-radius: 0.2rem;
+}
+
+summary {
+  min-height: 44px;
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+details > div {
+  padding: 0 1rem 1rem;
+}
+
+
+/* Service directory search and filter layout */
+.search-form {
+  margin-block: 1.5rem;
+}
+
+.results-summary {
+  margin-top: 1.5rem;
+}
+
+.filter-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-block: 0.75rem;
+}
+
+.filter-option input {
+  flex: 0 0 auto;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.3rem;
+  accent-color: var(--teal);
+}
+
+.filter-option label {
+  display: inline;
+  margin: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.search-form button,
+.help-panel button {
+  margin-top: 0.25rem;
+}
+
+.search-form input:focus-visible,
+.filter-option input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+
+@media (max-width: 54rem) {
+  .content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .help-panel {
+    max-width: none;
   }
 }
-p {
+
+@media (max-width: 40rem) {
+  .wrap {
+    width: min(100% - 1.5rem, var(--content-width));
+  }
+
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav-list {
+    gap: 0.25rem;
+  }
+
+  .nav-list a {
+    padding-inline: 0.6rem;
+  }
+
+  .service-grid,
+  .footer-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .button,
+  .button-secondary,
+  .service-card,
+  .help-panel,
+  .hero,
+  .accessibility-note {
+    border: 1px solid CanvasText;
+  }
+
+  :focus-visible {
+    outline: 3px solid Highlight;
+  }
+
+  .site-header,
+  .site-footer {
+    border-color: Highlight;
+  }
+}
+
+
+
+.radio-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-block: 0.75rem;
+}
+
+.radio-option input {
+  flex: 0 0 auto;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.1rem 0 0;
+  accent-color: var(--teal);
+}
+
+.radio-option label {
+  display: inline;
+  margin: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.radio-option input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* "(required)" text beside a label: quieter than the label, still 8.24:1 on white */
+.required-text {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.booking-layout {
+  max-width: 46rem;
+}
+
+.before-panel {
+  margin-block: 1.5rem 2rem;
+  border-left: 0.5rem solid var(--teal);
+}
+
+.before-panel > :last-child {
+  margin-bottom: 0;
+}
+/* ---- Fieldset legends -----------------------------------------------------
+   A native legend straddles the top border, so a legend that wraps onto two
+   lines (narrow filter panel, phones) cuts the border in the wrong place.
+   Floating it makes it an ordinary heading inside the box at every width. */
+fieldset {
+  min-width: 0;
+}
+
+legend {
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+
+legend + * {
+  clear: both;
+}
+
+/* A note directly above a card grid needs breathing room. */
+.hint + .service-grid {
+  margin-top: 1rem;
+}
+
+/* Visually hidden, still read by screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Availability table ---- */
+.availability {
+  margin-top: 2.5rem;
+}
+
+.table-scroll {
+  position: relative; /* contains the absolutely positioned .sr-only text so it cannot widen the page */
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 30rem;
+  border-collapse: collapse;
+}
+
+caption {
+  padding: 0.5rem 0;
+  font-weight: 700;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid var(--border);
+}
+
+thead th {
+  background: var(--sage);
+}
+
+.slot-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot-list a {
+  display: inline-block;
+  min-height: 44px;
+  padding: 0.55rem 0;
+}
+
+/* ==========================================================================
+   React app additions
+   Everything above this line is the same stylesheet the wireframes use, so the
+   prototype and the app look and behave alike. These rules cover the parts
+   only the app has: live validation, toggles, the accordion and the dialog.
+   Extra colour pairs used here (all from the audited palette):
+   --paper  #FFFFFF on --teal #0F4C5C           9.51:1  pressed toggle chip
+   --ink    #17212B on #E1ECE7                  13.30:1  accordion hover
+   --error  #9B1C1C on --error-bg #FDECEC        7.14:1  error summary
+   --error border #9B1C1C on --paper            8.15:1  invalid field border
+   ========================================================================== */
+
+/* Programmatic focus targets (tabindex="-1") get a ring only when focus-visible says so. */
+main:focus,
+h1:focus {
+  outline: none;
+}
+
+main:focus-visible,
+h1:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.results > li {
+  display: flex;
+  min-width: 0;
+}
+
+.results > li > .service-card {
+  flex: 1 1 auto;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  color: var(--amber-text);
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.link-button {
+  padding: 0.25rem 0;
+  color: var(--teal);
+  background: none;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  color: var(--teal-dark);
+}
+
+/* Accordion */
+.accordion-heading {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+}
+
+.accordion-btn {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--border);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-btn:hover {
+  background: #E1ECE7;
+}
+
+#filter-panel[hidden] {
+  display: none;
+}
+
+/* Toggle chips (aria-pressed). Pressed is shown by a check mark, a fill and bold text, never colour alone. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  min-height: 44px;
+  padding: 0.5rem 0.9rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--border);
+  border-radius: 0.25rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.chip:hover {
+  background: var(--sage);
+}
+
+.chip[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--teal);
+  border-color: var(--teal-dark);
+  font-weight: 700;
+}
+
+/* Region being refreshed: a quiet background change only, so text contrast never drops. */
+[aria-busy="true"] .table-scroll {
+  background: var(--sage);
+}
+
+button[aria-disabled="true"] {
+  cursor: progress;
+}
+
+/* Form states */
+.field.has-error input,
+.field.has-error select,
+.field.has-error textarea {
+  border-color: var(--error);
+  border-width: 3px;
+}
+
+.error {
+  margin: 0 0 0.4rem;
+  color: var(--error);
+  font-weight: 700;
+}
+
+.error-summary {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--error-bg);
+  border: 3px solid var(--error);
+  border-radius: var(--radius);
+}
+
+.error-summary h2 {
+  margin-top: 0;
+  color: var(--error);
+}
+
+.selected-appt {
+  margin-bottom: 1.5rem;
+  border-left: 0.5rem solid var(--teal);
+}
+
+.selected-appt > :last-child {
+  margin-bottom: 0;
+}
+
+.filters-note {
+  margin-top: 0;
+}
+
+/* Confirmation dialog */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(23 33 43 / 75%);
+}
+
+.modal {
+  width: 100%;
+  max-width: 32rem;
+  max-height: 90vh;
+  padding: 1.5rem;
+  overflow: auto;
+  color: var(--ink);
+  background: var(--paper);
+  border: 4px solid var(--teal);
+  border-radius: var(--radius);
+}
+
+.modal h2 {
+  margin-top: 0;
+  color: var(--teal);
+}
+
+.modal dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem 1rem;
+}
+
+.modal dt {
+  font-weight: 700;
+}
+
+.modal dd {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+@media (forced-colors: active) {
+  .chip[aria-pressed="true"] {
+    border-width: 4px;
+  }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  .modal,
+  .error-summary {
+    border: 2px solid CanvasText;
+  }
 }
